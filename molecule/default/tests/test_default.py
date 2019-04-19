@@ -8,7 +8,16 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 ).get_hosts("all")
 
 
-@pytest.mark.parametrize("x", [True])
-def test_packages(host, x):
-    """A dummy test, just to show what one would look like"""
-    assert x
+@pytest.mark.parametrize(
+    "pkgs",
+    [
+        ["python-pip", "python27-pip"],
+        ["python3-pip", "python36-pip"],
+        ["python-dev", "python27-devel"],
+        ["python3-dev", "python36-devel"],
+    ],
+)
+def test_pip(host, pkgs):
+    packages = [host.package(pkg) for pkg in pkgs]
+    installed = [package.is_installed for package in packages]
+    assert any(installed)
