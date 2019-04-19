@@ -8,7 +8,9 @@ This is an Ansible role for installing pip.
 
 ## Requirements ##
 
-None.
+This role uses the `package` Ansible module, so [its
+requirements](https://docs.ansible.com/ansible/latest/modules/package_module.html#requirements)
+apply.
 
 ## Role Variables ##
 
