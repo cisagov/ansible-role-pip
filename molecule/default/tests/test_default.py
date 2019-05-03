@@ -1,3 +1,5 @@
+"""Module containing the tests for the default scenario."""
+
 import os
 import pytest
 
@@ -18,6 +20,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     ],
 )
 def test_pip(host, pkgs):
+    """Test that the appropriate pip packages were installed."""
     packages = [host.package(pkg) for pkg in pkgs]
     installed = [package.is_installed for package in packages]
     assert any(installed)
