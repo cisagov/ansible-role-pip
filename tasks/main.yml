@@ -1,14 +1,6 @@
 ---
 # tasks file for pip
 
-# This is required temporarily, because of
-# https://github.com/ansible/ansible/issues/56583
-- name: Temporary workaround for ansible/ansible#56583
-  set_fact:
-    ansible_facts:
-      pkg_mgr: yum
-  when: ansible_os_family == "RedHat" and ansible_distribution == "Amazon"
-
 # python-dev is usually needed with pip to build the wheels associated
 # with python packages
 - name: Install pip (Debian)
@@ -22,12 +14,21 @@
     - ansible_os_family == "Debian"
 
 - name: Install pip (AmazonLinux)
-  package:
-    name:
-      - python27-pip
-      - python27-devel
-      - python36-pip
-      - python36-devel
+  block:
+    # This is required temporarily, because of
+    # https://github.com/ansible/ansible/issues/56583
+    - name: Temporary workaround for ansible/ansible#56583
+      set_fact:
+        ansible_facts:
+          pkg_mgr: yum
+
+    - name: Install pip
+      package:
+        name:
+          - python27-pip
+          - python27-devel
+          - python36-pip
+          - python36-devel
   when: ansible_os_family == "RedHat" and ansible_distribution == "Amazon"
 
 - name: Install pip (Fedora)
