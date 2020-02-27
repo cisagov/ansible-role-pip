@@ -1,6 +1,6 @@
 # ansible-role-pip #
 
-[![Build Status](https://travis-ci.com/cisagov/ansible-role-pip.svg?branch=develop)](https://travis-ci.com/cisagov/ansible-role-pip)
+[![GitHub Build Status](https://github.com/cisagov/ansible-role-pip/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-pip/actions)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-pip.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-pip/alerts/)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-pip.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-pip/context:python)
 
