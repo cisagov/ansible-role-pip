@@ -3,30 +3,24 @@
 
 # python-dev is usually needed with pip to build the wheels associated
 # with python packages
-- name: Install pip (Debian)
-  package:
-    name:
+- name: Determine Python package names (Debian)
+  set_fact:
+    package_names:
       - python-pip
       - python-dev
       - python3-pip
       - python3-dev
-  when:
-    - ansible_os_family == "Debian"
+  when: ansible_os_family == 'Debian' or ansible_os_family == 'Kali GNU/Linux'
 
-- name: Install pip (AmazonLinux)
-  package:
-    name:
-      - python27-pip
-      - python27-devel
-      - python36-pip
-      - python36-devel
-  when: ansible_os_family == "RedHat" and ansible_distribution == "Amazon"
-
-- name: Install pip (Fedora)
-  package:
-    name:
+- name: Determine Python package names (RedHat)
+  set_fact:
+    package_names:
       - python2-pip
       - python2-devel
       - python3-pip
       - python3-devel
-  when: ansible_os_family == "RedHat" and ansible_distribution == "Fedora"
+  when: ansible_os_family == 'RedHat'
+
+- name: Install python
+  package:
+    name: '{{ package_names }}'

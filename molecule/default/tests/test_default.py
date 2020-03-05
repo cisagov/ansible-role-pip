@@ -4,6 +4,7 @@
 import os
 
 # Third-Party Libraries
+import pytest
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
@@ -11,17 +12,36 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 ).get_hosts("all")
 
 
-def test_pip(host):
-    """Test that the appropriate pip packages were installed."""
-    if host.system_info.distribution == "debian":
-        pkgs = ["python-pip", "python-dev", "python3-pip", "python3-dev"]
-    elif host.system_info.distribution == "fedora":
-        pkgs = ["python2-pip", "python2-devel", "python3-pip", "python3-devel"]
-    elif host.system_info.distribution == "amzn":
-        pkgs = ["python27-pip", "python27-devel", "python36-pip", "python36-devel"]
-    else:
-        pkgs = []
-    packages = [host.package(pkg) for pkg in pkgs]
-    installed = [package.is_installed for package in packages]
-    assert len(pkgs) != 0
-    assert all(installed)
+@pytest.mark.parametrize(
+    "pkg", ["python2-pip", "python-devel", "python3-pip", "python3-devel"]
+)
+def test_python_amazon(host, pkg):
+    """Test that the appropriate packages were installed.
+
+    Amazon Linux is behind Fedora, so that is why we need a separate
+    test for that distribution.  If we tested an older version of
+    Fedora it would use this test as well.
+    """
+    if host.system_info.distribution == "amzn":
+        assert host.package(pkg).is_installed
+
+
+@pytest.mark.parametrize(
+    "pkg", ["python-pip", "python-dev", "python3-pip", "python3-dev"]
+)
+def test_python_debian(host, pkg):
+    """Test that the appropriate packages were installed."""
+    if (
+        host.system_info.distribution == "debian"
+        or host.system_info.distribution == "kali"
+    ):
+        assert host.package(pkg).is_installed
+
+
+@pytest.mark.parametrize(
+    "pkg", ["python2-pip", "python2-devel", "python3-pip", "python3-devel"]
+)
+def test_python_fedora(host, pkg):
+    """Test that the appropriate packages were installed."""
+    if host.system_info.distribution == "fedora":
+        assert host.package(pkg).is_installed
