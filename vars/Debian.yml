@@ -1,0 +1,9 @@
+---
+# vars file for Debian
+
+# The pip package names
+package_names:
+  - python-pip
+  - python-dev
+  - python3-pip
+  - python3-dev
