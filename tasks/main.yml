@@ -16,6 +16,6 @@
       paths:
         - "vars"
 
-- name: Install python
+- name: Install pip
   package:
     name: '{{ package_names }}'
