@@ -31,6 +31,9 @@ def test_python_amazon(host, pkg):
 )
 def test_python_debian(host, pkg):
     """Test that the appropriate packages were installed."""
+    # host.system_info.release can be None if the release is still a
+    # testing release that has not been officially released yet.  This
+    # is currently (2020/03/27) the case for Debian 11 (Bullseye).
     if (
         host.system_info.distribution == "debian"
         and (
@@ -47,6 +50,9 @@ def test_python_debian_bullseye_and_later(host, pkg):
     The packages python-pip and python-dev no longer exist in Bullseye
     or later.
     """
+    # host.system_info.release can be None if the release is still a
+    # testing release that has not been officially released yet.  This
+    # is currently (2020/03/27) the case for Debian 11 (Bullseye).
     if host.system_info.distribution == "debian" and (
         host.system_info.release is None or int(host.system_info.release) >= 11
     ):
