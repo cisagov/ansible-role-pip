@@ -1,0 +1,8 @@
+---
+# vars file for Debian 11
+
+# The pip package names.  python-pip and python-dev were removed in
+# Debian 11.
+package_names:
+  - python3-pip
+  - python3-dev
