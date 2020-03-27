@@ -33,7 +33,22 @@ def test_python_debian(host, pkg):
     """Test that the appropriate packages were installed."""
     if (
         host.system_info.distribution == "debian"
-        or host.system_info.distribution == "kali"
+        and (
+            host.system_info.release is not None and int(host.system_info.release) < 11
+        )
+    ) or host.system_info.distribution == "kali":
+        assert host.package(pkg).is_installed
+
+
+@pytest.mark.parametrize("pkg", ["python3-pip", "python3-dev"])
+def test_python_debian_bullseye_and_later(host, pkg):
+    """Test that the appropriate packages were installed.
+
+    The packages python-pip and python-dev no longer exist in Bullseye
+    or later.
+    """
+    if host.system_info.distribution == "debian" and (
+        host.system_info.release is None or int(host.system_info.release) >= 11
     ):
         assert host.package(pkg).is_installed
 
