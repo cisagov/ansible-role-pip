@@ -34,17 +34,14 @@ def test_python_debian(host, pkg):
     # host.system_info.release can be None if the release is still a
     # testing release that has not been officially released yet.  This
     # is currently (2020/03/27) the case for Debian 11 (Bullseye).
-    if (
-        host.system_info.distribution == "debian"
-        and (
-            host.system_info.release is not None and int(host.system_info.release) < 11
-        )
-    ) or host.system_info.distribution == "kali":
+    if host.system_info.distribution == "debian" and (
+        host.system_info.release is not None and int(host.system_info.release) < 11
+    ):
         assert host.package(pkg).is_installed
 
 
 @pytest.mark.parametrize("pkg", ["python3-pip", "python3-dev"])
-def test_python_debian_bullseye_and_later(host, pkg):
+def test_python_kali_and_debian_bullseye_and_later(host, pkg):
     """Test that the appropriate packages were installed.
 
     The packages python-pip and python-dev no longer exist in Bullseye
@@ -53,8 +50,10 @@ def test_python_debian_bullseye_and_later(host, pkg):
     # host.system_info.release can be None if the release is still a
     # testing release that has not been officially released yet.  This
     # is currently (2020/03/27) the case for Debian 11 (Bullseye).
-    if host.system_info.distribution == "debian" and (
-        host.system_info.release is None or int(host.system_info.release) >= 11
+    if (
+        host.system_info.distribution == "debian"
+        and (host.system_info.release is None or int(host.system_info.release) >= 11)
+        or host.system_info.distribution == "kali"
     ):
         assert host.package(pkg).is_installed
 

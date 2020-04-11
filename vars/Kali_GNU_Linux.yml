@@ -1,0 +1,8 @@
+---
+# vars file for Kali
+
+# The pip package names.  These values are identical to those fro
+# Debian 11.
+package_names:
+  - python3-pip
+  - python3-dev
