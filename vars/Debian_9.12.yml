@@ -1,11 +1,1 @@
----
-# vars file for Debian 9
-
-# The pip package names.  We treat Debian 9 as a special case because
-# the CyHy AMIs (and only the CyHy AMIs) are built on it.  Therefore
-# Debian 9 requires python2 support.
-package_names:
-  - python-pip
-  - python-dev
-  - python3-pip
-  - python3-dev
+Debian_9.yml
