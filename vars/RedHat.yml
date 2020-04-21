@@ -3,7 +3,5 @@
 
 # The pip package names
 package_names:
-  - python2-pip
-  - python2-devel
   - python3-pip
   - python3-devel
