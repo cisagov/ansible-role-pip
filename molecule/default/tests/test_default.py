@@ -24,7 +24,7 @@ def test_pip(host):
         # requires python2.
         if (
             host.system_info.distribution == "debian"
-            and host.system_info.codename == "9.12"
+            and host.system_info.codename == "stretch"
         ):
             assert all(
                 [host.package(pkg).is_installed for pkg in debian_stretch_extra_pkgs]
