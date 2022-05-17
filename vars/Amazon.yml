@@ -6,7 +6,7 @@
 # Amazon Linux 2 is woefully behind the times and requires Python 2 to
 # support its antiquated version of the yum package manager.
 package_names:
-  - python2-pip
   - python-devel
+  - python2-pip
   - python3-pip
   - python3-devel
