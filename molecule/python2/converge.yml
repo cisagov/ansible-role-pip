@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: Include ansible-role-pip
+      ansible.builtin.include_role:
+        name: ansible-role-pip
+      vars:
+        install_pip2: yes

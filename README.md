@@ -14,14 +14,9 @@ apply.
 
 ## Role Variables ##
 
-None.
-
-<!--
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
-| optional_variable | Describe its purpose. | `default_value` | No |
-| required_variable | Describe its purpose. | n/a | Yes |
--->
+| install_python2 | A boolean indicating whether or not to install pip2 alongside pip3. | `false` | No |
 
 ## Dependencies ##
 
@@ -59,4 +54,4 @@ with this waiver of copyright interest.
 
 ## Author Information ##
 
-Jeremy Frasier - <jeremy.frasier@trio.dhs.gov>
+Shane Frasier - <jeremy.frasier@trio.dhs.gov>

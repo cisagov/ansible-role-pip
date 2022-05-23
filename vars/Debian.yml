@@ -1,7 +1,14 @@
 ---
-# vars file for Debian
+# The Python 2 package names
+#
+# No Python 2 pip package is available for Debian Bullseye.  There is
+# one available for Bookworm, but when installed it forces the
+# uninstall of python3-pip.  That isn't the behavior we desire, so we
+# simply don't support Python 2 for package installation via pip after
+# Debian Buster.
+python2_package_names: []
 
-# The pip package names.
-package_names:
-  - python3-pip
+# The Python 3 package names
+python3_package_names:
   - python3-dev
+  - python3-pip
