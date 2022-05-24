@@ -16,7 +16,7 @@ apply.
 
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
-| install_python2 | A boolean indicating whether or not to install pip2 alongside pip3.  Note that this is only possible for Amazon Linux 2, Debian Stretch, Debian Buster, and Ubuntu Bionic; therefore, this role variable is ignored for any other distribution. | `false` | No |
+| install_pip2 | A boolean indicating whether or not to install pip2 alongside pip3.  Note that this is only possible for Amazon Linux 2, Debian Stretch, Debian Buster, and Ubuntu Bionic; therefore, this role variable is ignored for any other distribution. | `false` | No |
 
 ## Dependencies ##
 
