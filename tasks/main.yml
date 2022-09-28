@@ -1,6 +1,4 @@
 ---
-# tasks file for pip
-
 - name: Load var file with package names based on the OS type
   ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
   vars:
@@ -12,6 +10,11 @@
       paths:
         - "{{ role_path }}/vars"
 
-- name: Install pip
+- name: Install pip3
   ansible.builtin.package:
-    name: '{{ package_names }}'
+    name: "{{ python3_package_names }}"
+
+- name: Install pip2
+  ansible.builtin.package:
+    name: "{{ python2_package_names }}"
+  when: install_pip2
