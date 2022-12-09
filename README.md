@@ -1,8 +1,7 @@
 # ansible-role-pip #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-pip/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-pip/actions)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-pip.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-pip/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-pip.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-pip/context:python)
+[![CodeQL](https://github.com/cisagov/ansible-role-pip/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-pip/actions/workflows/codeql-analysis.yml)
 
 This is an Ansible role for installing [pip](https://pip.pypa.io).
 
@@ -30,8 +29,10 @@ Here's how to use it in a playbook:
 - hosts: all
   become: yes
   become_method: sudo
-  roles:
-    - pip
+  tasks:
+    - name: Include skeleton
+      ansible.builtin.include_role:
+        name: pip
 ```
 
 ## Contributing ##
