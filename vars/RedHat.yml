@@ -1,9 +1,9 @@
 ---
 # The Python 2 package names
 #
-# No Python 2 pip package is available for Fedora 34 or 35, or any
-# other modern RedHat distributions.  Therefore, we simply don't
-# support Python 2 for package installation via pip.
+# No Python 2 pip package is available for Amazon Linux 2023, Fedora
+# 34 or later, or any other modern RedHat distributions.  Therefore,
+# we simply don't support Python 2 for package installation via pip.
 python2_package_names: []
 
 # The Python 3 package names
