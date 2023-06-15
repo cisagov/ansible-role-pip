@@ -17,4 +17,4 @@
 - name: Install pip2
   ansible.builtin.package:
     name: "{{ python2_package_names }}"
-  when: install_pip2
+  when: pip_install_pip2
