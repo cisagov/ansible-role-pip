@@ -13,7 +13,12 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 def test_pip3(host):
     """Test that the appropriate pip3 packages were installed."""
-    debian_pkgs = ["python3-pip", "python3-dev"]
+    debian_pkgs = [
+        "python3-dev",
+        "python3-distutils",
+        "python3-pip",
+        "python3-setuptools",
+    ]
     redhat_pkgs = ["python3-pip", "python3-devel"]
     if host.system_info.distribution in ["debian", "kali", "ubuntu"]:
         assert all([host.package(pkg).is_installed for pkg in debian_pkgs])
