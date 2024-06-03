@@ -15,7 +15,6 @@ def test_pip3(host):
     """Test that the appropriate pip3 packages were installed."""
     debian_pkgs = [
         "python3-dev",
-        "python3-distutils",
         "python3-pip",
         "python3-setuptools",
     ]
