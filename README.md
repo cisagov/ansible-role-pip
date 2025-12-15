@@ -1,6 +1,7 @@
 # ansible-role-pip #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-pip/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-pip/actions)
+[![License](https://img.shields.io/github/license/cisagov/ansible-role-pip)](https://spdx.org/licenses/)
 [![CodeQL](https://github.com/cisagov/ansible-role-pip/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-pip/actions/workflows/codeql-analysis.yml)
 
 This is an Ansible role for installing [pip](https://pip.pypa.io).
