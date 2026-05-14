@@ -15,7 +15,7 @@ apply.
 ## Role Variables ##
 
 | Variable | Description | Default | Required |
-|----------|-------------|---------|----------|
+| -------- | ----------- | ------- | -------- |
 | pip_install_pip2 | A boolean indicating whether or not to install pip2 alongside pip3.  Note that this is only possible for Debian Buster; therefore, this role variable is ignored for any other distribution. | `false` | No |
 
 ## Dependencies ##
