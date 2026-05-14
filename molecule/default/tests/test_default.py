@@ -20,8 +20,8 @@ def test_pip3(host):
     ]
     redhat_pkgs = ["python3-pip", "python3-devel"]
     if host.system_info.distribution in ["debian", "kali", "ubuntu"]:
-        assert all([host.package(pkg).is_installed for pkg in debian_pkgs])
+        assert all(host.package(pkg).is_installed for pkg in debian_pkgs)
     elif host.system_info.distribution in ["amzn", "fedora"]:
-        assert all([host.package(pkg).is_installed for pkg in redhat_pkgs])
+        assert all(host.package(pkg).is_installed for pkg in redhat_pkgs)
     else:
         raise AssertionError(f"Unknown distribution {host.system_info.distribution}")

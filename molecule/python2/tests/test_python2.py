@@ -16,7 +16,7 @@ def test_pip2(host):
     debian_buster_pkgs = ["python-pip", "python2-dev"]
     if host.system_info.distribution in ["debian", "kali", "ubuntu"]:
         if host.system_info.codename in ["buster"]:
-            assert all([host.package(pkg).is_installed for pkg in debian_buster_pkgs])
+            assert all(host.package(pkg).is_installed for pkg in debian_buster_pkgs)
         else:
             # pip2 is not installed in this case
             pass
