@@ -24,4 +24,4 @@ def test_pip2(host):
         # pip2 is not installed in this case
         pass
     else:
-        assert False, f"Unknown distribution {host.system_info.distribution}"
+        raise AssertionError(f"Unknown distribution {host.system_info.distribution}")
