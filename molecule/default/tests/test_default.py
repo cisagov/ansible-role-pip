@@ -33,4 +33,7 @@ def test_pip3_version(host):
     """Test that pip3 version is at least 19.0."""
     pip3_version = host.check_output("pip3 --version").split()[1]
     major, minor, *_ = pip3_version.split(".")
-    assert int(major) >= 19, f"pip3 major version {major} is less than 19"
+    assert (int(major), int(minor)) >= (
+        19,
+        0,
+    ), f"pip3 version {pip3_version} is less than 19.0"
