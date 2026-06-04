@@ -21,15 +21,12 @@
     # packages.  The latest version of pip3 available via the package manager is
     # too old to support pyproject.toml.
     - name: Upgrade pip3 via python for Debian Buster
-      ansible.builtin.command:
-        argv:
-          - python3
-          - -m
-          - pip
-          - install
-          - --upgrade
-          - pip
-        creates: /usr/local/bin/pip3
+      ansible.builtin.pip:
+        name: pip
+        # ansible-lint generates a warning that "package installs should
+        # not use latest" here, but we truly do want to use it here.
+        state: latest  # noqa package-latest
+        executable: pip3
       when: >-
         ansible_distribution == 'Debian' and
         ansible_distribution_release == 'buster'
