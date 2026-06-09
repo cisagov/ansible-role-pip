@@ -27,9 +27,9 @@
         # This is the last version of pip that supports Python 3.7, which is the
         # version of Python available for Debian Buster.
         version: 24.0
-      when: >-
-        ansible_distribution == 'Debian' and
-        ansible_distribution_release == 'buster'
+      when:
+        - ansible_distribution == 'Debian'
+        - ansible_distribution_release == 'buster'
 
 - name: Install pip2
   ansible.builtin.package:
