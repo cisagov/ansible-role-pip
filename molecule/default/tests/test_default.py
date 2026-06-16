@@ -25,3 +25,15 @@ def test_pip3(host):
         assert all(host.package(pkg).is_installed for pkg in redhat_pkgs)
     else:
         raise AssertionError(f"Unknown distribution {host.system_info.distribution}")
+
+
+# Test that pip3 version is at least 19.0, which is the minimum version that
+# supports pyproject.toml (required for installing some packages).
+def test_pip3_version(host):
+    """Test that pip3 version is at least 19.0."""
+    pip3_version = host.check_output("pip3 --version").split()[1]
+    major, minor, *_ = pip3_version.split(".")
+    assert (int(major), int(minor)) >= (
+        19,
+        0,
+    ), f"pip3 version {pip3_version} is less than 19.0"

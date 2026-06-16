@@ -11,8 +11,25 @@
         - "{{ role_path }}/vars"
 
 - name: Install pip3
-  ansible.builtin.package:
-    name: "{{ python3_package_names }}"
+  block:
+    - name: Install pip3 via package manager
+      ansible.builtin.package:
+        name: "{{ python3_package_names }}"
+
+    # For Debian Buster, upgrade pip3 via python in order to get a version new
+    # enough to support pyproject.toml, which is required for installing some
+    # packages.  The latest version of pip3 available via the package manager is
+    # too old to support pyproject.toml.
+    - name: Upgrade pip3 via python for Debian Buster
+      ansible.builtin.pip:
+        executable: pip3
+        name: pip
+        # This is the last version of pip that supports Python 3.7, which is the
+        # version of Python available for Debian Buster.
+        version: 24.0
+      when:
+        - ansible_distribution == 'Debian'
+        - ansible_distribution_release == 'buster'
 
 - name: Install pip2
   ansible.builtin.package:
